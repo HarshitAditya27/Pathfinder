@@ -3,7 +3,7 @@ import {
   END_TILE_STYLE,
   MAX_ROWS,
   PATH_TILE_STYLE,
-  STAR_TILE_STYLE,
+  START_TILE_STYLE,
   TILE_STYLE,
   TRAVERSED_TILE_STYLE,
   WALL_TILE_STYLE,
@@ -38,7 +38,7 @@ export function Tile({
 }) {
   let tileTyleStyle;
   if (isStart) {
-    tileTyleStyle = STAR_TILE_STYLE;
+    tileTyleStyle = START_TILE_STYLE;
   } else if (isEnd) {
     tileTyleStyle = END_TILE_STYLE;
   } else if (isWall) {
@@ -52,10 +52,9 @@ export function Tile({
   }
 
   const borderStyle =
-    row === MAX_ROWS - 1 ? "border-b" : col === 0 ? "border-l" : "";
+    row === MAX_ROWS - 1 ? "border-b" : col == 0 ? "border-l" : "";
 
-  const edgeStyle =
-    row === MAX_ROWS - 1 ? "border-b" : col === 0 ? "border-l" : "";
+  const edgeStyle = row === MAX_ROWS - 1 && col == 0 ? "border-l" : "";
   return (
     <div
       className={twMerge(tileTyleStyle, borderStyle, edgeStyle)}

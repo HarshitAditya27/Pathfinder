@@ -1,17 +1,26 @@
 import { useState } from "react";
 import { usePathfinding } from "../hooks/usePathfinding";
 import { useTile } from "../hooks/useTile";
-import { MAZES } from "../utils/constants";
+import { MAZES, PATHFINDING_ALGORITHMS } from "../utils/constants";
 import { resetGrid } from "../utils/resetGrid";
-import { MazeType } from "../utils/types";
+import { AlgorithmType, MazeType } from "../utils/types";
 import { Select } from "./Select";
 import { runMazeAlgorithm } from "../utils/runMazeAlgorithm";
 import { useSpeed } from "../hooks/useSpeed";
+import { PlayButton } from "./PlayButton";
 
 export function Nav() {
   const [isDisabled, setIsDisabled] = useState(false);
-  const { maze, setMaze, grid, setIsGraphVisualized, setGrid } =
-    usePathfinding();
+  const {
+    maze,
+    setMaze,
+    algorithm,
+    grid,
+    isGraphVisualized,
+    setIsGraphVisualized,
+    setGrid,
+    setAlgorithm,
+  } = usePathfinding();
   const { startTile, endTile } = useTile();
   const { speed } = useSpeed();
 
@@ -36,6 +45,14 @@ export function Nav() {
     setIsGraphVisualized(false);
   };
 
+  const handlerRunVisualizer = () => {
+    if (isGraphVisualized) {
+      setIsGraphVisualized(false);
+      resetGrid({ grid: grid.slice(), startTile, endTile });
+      return;
+    }
+  };
+
   return (
     <div className="flex items-center justify-center min-h-[4.5rem] border-b shadow-gray-600 sm:px-5 px-0">
       <div className="flex items-center lg:justify-between justify-center w-full sm:w-[52rem]">
@@ -48,6 +65,19 @@ export function Nav() {
             onChange={(e) => {
               handleGenerateMaze(e.target.value as MazeType);
             }}
+          />
+          <Select
+            label="Graph"
+            value={algorithm}
+            options={PATHFINDING_ALGORITHMS}
+            onChange={(e) => {
+              setAlgorithm(e.target.value as AlgorithmType);
+            }}
+          />
+          <PlayButton
+            isDisabled={isDisabled}
+            isGraphVisualized={isGraphVisualized}
+            handlerRunVisualizer={() => {}}
           />
         </div>
       </div>

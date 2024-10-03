@@ -37,7 +37,7 @@ export const aStar = (
       traversedTiles.push(currentTile);
       if (isEqual(currentTile, endTile)) break;
       const neighbours = getUntraversedNeighbours(grid, currentTile);
-      for (let i = 0; i < neighbours.length; i++) {
+      for (let i = 0; i < neighbours.length; i += 1) {
         const distanceToNeighbours = currentTile.distance + 1;
         if (distanceToNeighbours < neighbours[i].distance) {
           dropFromQueue(neighbours[i], untraversedTiles);
@@ -56,8 +56,7 @@ export const aStar = (
   while (current !== null) {
     current.isPath = true;
     path.unshift(current);
-
-    current = current.parent;
+    current = current.parent!;
   }
   return { traversedTiles, path };
 };

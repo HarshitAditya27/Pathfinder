@@ -34,7 +34,7 @@ export function Nav({
     setAlgorithm,
   } = usePathfinding();
   const { startTile, endTile } = useTile();
-  const { speed,setSpeed } = useSpeed();
+  const { speed, setSpeed } = useSpeed();
 
   const handleGenerateMaze = (maze: MazeType) => {
     if (maze == "NONE") {
@@ -90,6 +90,7 @@ export function Nav({
             label="Maze"
             value={maze}
             options={MAZES}
+            isDisabled={isDisabled}
             onChange={(e) => {
               handleGenerateMaze(e.target.value as MazeType);
             }}
@@ -97,12 +98,21 @@ export function Nav({
           <Select
             label="Graph"
             value={algorithm}
+            isDisabled={isDisabled}
             options={PATHFINDING_ALGORITHMS}
             onChange={(e) => {
               setAlgorithm(e.target.value as AlgorithmType);
             }}
           />
-          <Select label="Speed" value={speed} options={SPEEDS} onChange={(e) =>{setSpeed(parseInt(e.target.value) as SpeedType )}}
+          <Select
+            label="Speed"
+            value={speed}
+            options={SPEEDS}
+            isDisabled={isDisabled}
+            onChange={(e) => {
+              setSpeed(parseInt(e.target.value) as SpeedType);
+            }}
+          />
           <PlayButton
             isDisabled={isDisabled}
             isGraphVisualized={isGraphVisualized}

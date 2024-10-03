@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { PathfindingProvider } from "./context/PathfindingContext";
 import { TileProvider } from "./context/TileContext";
 import { SpeedProvider } from "./context/SpeedContext";
@@ -11,7 +11,7 @@ function App() {
     <PathfindingProvider>
       <TileProvider>
         <SpeedProvider>
-          <div className="h-screen w-screen flex flex-col">
+          <div className="h-screen w-screen flex flex-col bg-[#131416]">
             <Nav isVisualizationRunningRef={isVisualizationRunningRef} />
             <Grid isVisualizationRunningRef={isVisualizationRunningRef} />
           </div>

@@ -11,9 +11,9 @@ export const bfs = (grid: GridType, startTile: TileType, endTile: TileType) => {
   const unTraversed = [base];
 
   while (unTraversed.length) {
-    const tile = unTraversed.shift();
+    const tile = unTraversed.shift() as TileType;
     if (tile.isWall) continue;
-    if (tile?.distance == Infinity) break;
+    if (tile.distance == Infinity) break;
     tile.isTraversed = true;
     traversedTiles.push(tile);
     if (isEqual(tile, endTile)) break;
@@ -31,6 +31,7 @@ export const bfs = (grid: GridType, startTile: TileType, endTile: TileType) => {
   const path = [];
   let tile = grid[endTile.row][endTile.col];
   while (tile !== null) {
+    tile.isPath = true;
     path.unshift(tile);
     tile = tile.parent!;
   }

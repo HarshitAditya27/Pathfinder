@@ -28,7 +28,9 @@ export const createGrid = (startTile: TileType, endTile: TileType) => {
 };
 
 export const checkIfStartOrEnd = (row: number, col: number) => {
-  return (row === 1 && col === 1) || (row === MAX_ROWS - 2 && MAX_COLS - 2);
+  return (
+    (row === 1 && col === 1) || (row === MAX_ROWS - 2 && col === MAX_COLS - 2)
+  );
 };
 
 export const createNewGrid = (grid: GridType, row: number, col: number) => {

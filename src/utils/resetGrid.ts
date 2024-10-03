@@ -27,9 +27,7 @@ export const resetGrid = ({
       tile.isWall = false;
 
       if (!isEqual(startTile, tile) && !isEqual(endTile, tile)) {
-        const tileElement = document.getElementById(
-          `${tile.row} - ${tile.col}`
-        );
+        const tileElement = document.getElementById(`${tile.row}-${tile.col}`);
 
         if (tileElement) {
           tileElement.className = TILE_STYLE;

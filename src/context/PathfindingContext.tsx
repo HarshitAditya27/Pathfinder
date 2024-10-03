@@ -42,7 +42,6 @@ export const PathfindingProvider = ({ children }: { children: ReactNode }) => {
         setIsGraphVisualized,
       }}
     >
-      {" "}
       {children}
     </PathfindingContext.Provider>
   );

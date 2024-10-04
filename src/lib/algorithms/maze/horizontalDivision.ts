@@ -3,7 +3,7 @@ import { getRandInt, isEqual, sleep } from "../../../utils/helpers";
 import { GridType, SpeedType, TileType } from "../../../utils/types";
 import recursiveDivision from "./recursiveDivision";
 
-export default async function horizontalDivision({
+export async function horizontalDivision({
   grid,
   startTile,
   endTile,

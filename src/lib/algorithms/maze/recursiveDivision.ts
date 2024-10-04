@@ -1,6 +1,7 @@
 import { GridType, SpeedType, TileType } from "../../../utils/types";
-import { verticleDivision } from "./verticleDivision";
-import horizontalDivision from "./horizontalDivision";
+
+import { horizontalDivision } from "./horizontalDivision";
+import { verticalDivision } from "./verticalDivision";
 
 export default async function recursiveDivision({
   grid,
@@ -39,7 +40,7 @@ export default async function recursiveDivision({
       speed,
     });
   } else {
-    await verticleDivision({
+    await verticalDivision({
       grid,
       startTile,
       endTile,

@@ -1,4 +1,4 @@
-import { getUntraversedNeighbours } from "../../../utils/getUntraversedNeighbours";
+import { getUntraversedNeighbors } from "../../../utils/getUntraversedNeighbours";
 import { checkStack, isEqual } from "../../../utils/helpers";
 import { GridType, TileType } from "../../../utils/types";
 
@@ -17,7 +17,7 @@ export const dfs = (grid: GridType, startTile: TileType, endTile: TileType) => {
       currentTile.isTraversed = true;
       traversedTiles.push(currentTile);
       if (isEqual(currentTile, endTile)) break;
-      const neighbours = getUntraversedNeighbours(grid, currentTile);
+      const neighbours = getUntraversedNeighbors(grid, currentTile);
       for (let i = 0; i < neighbours.length; i += 1) {
         if (!checkStack(neighbours[i], untraversedTiles)) {
           neighbours[i].distance = currentTile.distance + 1;

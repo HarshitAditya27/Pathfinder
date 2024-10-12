@@ -23,8 +23,9 @@ export const animatePath = (
           `${tile.row}-${tile.col}`
         )!.className = `${TRAVERSED_TILE_STYLE} animate-traversed`;
       }
-    }, SLEEP_TIME * i * SPEEDS.find((s) => s.value == speed)!.value);
+    }, SLEEP_TIME * i * SPEEDS.find((s) => s.value === speed)!.value);
   }
+
   setTimeout(() => {
     for (let i = 0; i < path.length; i++) {
       setTimeout(() => {
@@ -34,7 +35,7 @@ export const animatePath = (
             `${tile.row}-${tile.col}`
           )!.className = `${PATH_TILE_STYLE} animate-path`;
         }
-      }, EXTENDED_SLEEP_TIME * i * SPEEDS.find((s) => s.value == speed)!.value);
+      }, EXTENDED_SLEEP_TIME * i * SPEEDS.find((s) => s.value === speed)!.value);
     }
   }, SLEEP_TIME * traversedTiles.length * SPEEDS.find((s) => s.value === speed)!.value);
 };

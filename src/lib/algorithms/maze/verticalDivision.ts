@@ -21,7 +21,7 @@ export async function verticalDivision({
   col: number;
   height: number;
   width: number;
-  setIsDisabled: (isDisabled: boolean) => void;
+  setIsDisabled: (disabled: boolean) => void;
   speed: SpeedType;
 }) {
   const makeWallAt = col + getRandInt(0, width - 1) * 2 + 1;
@@ -30,14 +30,15 @@ export async function verticalDivision({
   for (let i = 0; i < 2 * height - 1; i += 1) {
     if (makePassageAt !== row + i) {
       if (
-        !isEqual(grid[row][makeWallAt], startTile) &&
+        !isEqual(grid[row + i][makeWallAt], startTile) &&
         !isEqual(grid[row + i][makeWallAt], endTile)
       ) {
         grid[row + i][makeWallAt].isWall = true;
+
         document.getElementById(
           `${row + i}-${makeWallAt}`
         )!.className = `${WALL_TILE_STYLE} animate-wall`;
-        await sleep(100 * SPEEDS.find((s) => s.value === speed)!.value - 5);
+        await sleep(10 * SPEEDS.find((s) => s.value === speed)!.value - 5);
       }
     }
   }
@@ -57,7 +58,7 @@ export async function verticalDivision({
     startTile,
     endTile,
     row,
-    col,
+    col: makeWallAt + 1,
     height,
     width: width - (makeWallAt - col + 1) / 2,
     setIsDisabled,

@@ -1,4 +1,4 @@
-import { getUntraversedNeighbours } from "../../../utils/getUntraversedNeighbours";
+import { getUntraversedNeighbors } from "../../../utils/getUntraversedNeighbours";
 import { dropFromQueue, isEqual } from "../../../utils/helpers";
 import {
   initFunctionCost,
@@ -36,7 +36,7 @@ export const aStar = (
       currentTile.isTraversed = true;
       traversedTiles.push(currentTile);
       if (isEqual(currentTile, endTile)) break;
-      const neighbours = getUntraversedNeighbours(grid, currentTile);
+      const neighbours = getUntraversedNeighbors(grid, currentTile);
       for (let i = 0; i < neighbours.length; i += 1) {
         const distanceToNeighbours = currentTile.distance + 1;
         if (distanceToNeighbours < neighbours[i].distance) {

@@ -11,8 +11,9 @@ export async function constructBorder(
     { row: 0, col: 1 },
     { row: 1, col: 0 },
     { row: 0, col: -1 },
-    { row: -1, col: 1 },
+    { row: -1, col: 0 },
   ];
+
   let row = 0;
   let col = 0;
 
@@ -43,6 +44,7 @@ export async function constructBorder(
         await sleep(SLEEP_TIME);
       }
     }
+
     if (row < 0) row = 0;
     if (row >= MAX_ROWS) row = MAX_ROWS - 1;
     if (col < 0) col = 0;

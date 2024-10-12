@@ -1,4 +1,4 @@
-import { getUntraversedNeighbours } from "../../../utils/getUntraversedNeighbours";
+import { getUntraversedNeighbors } from "../../../utils/getUntraversedNeighbours";
 import { dropFromQueue, isEqual } from "../../../utils/helpers";
 import { GridType, TileType } from "../../../utils/types";
 
@@ -22,7 +22,7 @@ export const dijkstra = (
       currentTile.isTraversed = true;
       traversedTiles.push(currentTile);
       if (isEqual(currentTile, endTile)) break;
-      const neighbours = getUntraversedNeighbours(grid, currentTile);
+      const neighbours = getUntraversedNeighbors(grid, currentTile);
       for (let i = 0; i < neighbours.length; i += 1) {
         if (currentTile.distance + 1 < neighbours[i].distance) {
           dropFromQueue(neighbours[i], untraversedTiles);

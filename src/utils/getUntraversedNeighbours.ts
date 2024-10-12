@@ -1,20 +1,21 @@
 import { MAX_COLS, MAX_ROWS } from "./constants";
 import { GridType, TileType } from "./types";
 
-export const getUntraversedNeighbours = (grid: GridType, tile: TileType) => {
+export const getUntraversedNeighbors = (grid: GridType, tile: TileType) => {
   const { row, col } = tile;
-  const neighbours = [];
+  const neighbors = [];
+
   if (row > 0) {
-    neighbours.push(grid[row - 1][col]);
+    neighbors.push(grid[row - 1][col]);
   }
   if (row < MAX_ROWS - 1) {
-    neighbours.push(grid[row + 1][col]);
+    neighbors.push(grid[row + 1][col]);
   }
   if (col > 0) {
-    neighbours.push(grid[row][col - 1]);
+    neighbors.push(grid[row][col - 1]);
   }
   if (col < MAX_COLS - 1) {
-    neighbours.push(grid[row][col + 1]);
+    neighbors.push(grid[row][col + 1]);
   }
-  return neighbours.filter((neighbour) => !neighbour.isTraversed);
+  return neighbors.filter((neighbor) => !neighbor.isTraversed);
 };

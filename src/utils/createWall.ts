@@ -12,7 +12,7 @@ export const createWall = (
   for (let row = 0; row < MAX_ROWS; row++) {
     setTimeout(() => {
       for (let col = 0; col < MAX_COLS; col++) {
-        if (row % 2 == 0 || col % 2 == 0) {
+        if (row % 2 === 0 || col % 2 === 0) {
           if (
             !isRowColEqual(row, col, startTile) &&
             !isRowColEqual(row, col, endTile)
